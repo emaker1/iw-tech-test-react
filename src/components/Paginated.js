@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { EstablishmentsTable } from "./EstablishmentsTable";
-import { EstablishmentsTableNavigation } from "./EstablishmentsTableNavigation";
+import { EstablishmentsTable } from "./Table";
+import { EstablishmentsTableNavigation } from "./Navigation";
 
 const tableStyle = {
   background: "rgba(51, 51, 51, 0.9)",

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PaginatedEstablishmentsTable } from "../components/PaginatedEstablishmentsTable";
+import { PaginatedEstablishmentsTable } from "../components/Paginated";
 import Background from "../static/logo.svg";
 
 const logoStyle = {
