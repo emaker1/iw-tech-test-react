@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Filter } from "./Filter";
 
 import { EstablishmentsTableRow } from "./Row";
 import { Loading } from "./Loading";
@@ -31,7 +30,6 @@ export const EstablishmentsTable = ({ pageNumber }) => {
   if (error) return <div>Error: {error}</div>;
   return (
     <table>
-      <div>Filter by Region ID: <Filter /></div>
       <tbody>
         <tr>
           <th style={headerStyle}>Business Name</th>
