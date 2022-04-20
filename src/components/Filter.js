@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+// import React from "react";
 
 export const Filter = () => {
-  const [authorities, setAuthorities] = useState;
+  
+  const [data, setData] = useState;
   const url = `https://api.ratings.food.gov.uk/Authorities/basic`;
   fetch(url, { headers: { "x-api-version": "2" } })
     .then((res) => res.json())
-    .then((json) => setAuthorities(json));
+    .then((json) => setData(json))
 
-  const { authorities } = filterData || {}; //what would console.log output for authorities? object or array of objects?
 
-  const changeHandler = () => {
-    const [filteredUrl, setFilteredUrl] = useState("");
-    setFilteredUrl(Event.currentTarget.value);
-    const url = `https://api.ratings.food.gov.uk/Establishments?localAuthorityId=${filteredUrl}/basic`;
-    fetch(url, { headers: { "x-api-version": "2" } })
-      .then((res) => res.json())
-      .then((json) => setFilterData(json));
-  };
+  const { options } = data || {};
+
+
+  //   const { authorities } = filterData || {}; //what would console.log output for authorities? object or array of objects?
+
+  //   const changeHandler = () => {
+  //     const [filteredUrl, setFilteredUrl] = useState("");
+  //     setFilteredUrl(Event.currentTarget.value);
+  //     const url = `https://api.ratings.food.gov.uk/Establishments?localAuthorityId=${filteredUrl}/basic`;
+  //     fetch(url, { headers: { "x-api-version": "2" } })
+  //       .then((res) => res.json())
+  //       .then((json) => setFilterData(json));
+  //   };
 
   /* 
 1. render the selection
