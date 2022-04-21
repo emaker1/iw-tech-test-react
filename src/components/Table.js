@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-// import { Filter } from "./Filter";
+import Filter from "./Filter";
 
 import { EstablishmentsTableRow } from "./Row";
 import { Loading } from "./Loading";
@@ -15,12 +15,6 @@ export const EstablishmentsTable = ({ pageNumber }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const [authorities, setAuthorities] = useState([]);
-  const url = `https://api.ratings.food.gov.uk/Authorities/basic`;
-  fetch(url, { headers: { "x-api-version": "2" } })
-    .then((res) => res.json())
-    .then((data) => setAuthorities(data));
 
   useEffect(() => {
     setLoading(true);
@@ -38,6 +32,7 @@ export const EstablishmentsTable = ({ pageNumber }) => {
   return (
     <table>
       <div>Filter by Region ID:</div>
+      <div style={{width: 200}}><Filter prompt={'select authority'}/></div>
       <tbody>
         <tr>
           <th style={headerStyle}>Business Name</th>

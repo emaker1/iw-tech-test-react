@@ -1,40 +1,34 @@
-// import React from "react";
+import React, {useState} from "react";
+import "./styles.css";
 
-export const Filter = () => {
-  
-  const [data, setData] = useState;
+export default function dropdown({prompt,
+  // value, 
+  // onChange,
+}) {
+
+  const [open, setOpen] = useState(false)
+    
+  const data = [];
   const url = `https://api.ratings.food.gov.uk/Authorities/basic`;
   fetch(url, { headers: { "x-api-version": "2" } })
     .then((res) => res.json())
-    .then((json) => setData(json))
-
-
-  const { options } = data || {};
-
-
-  //   const { authorities } = filterData || {}; //what would console.log output for authorities? object or array of objects?
-
-  //   const changeHandler = () => {
-  //     const [filteredUrl, setFilteredUrl] = useState("");
-  //     setFilteredUrl(Event.currentTarget.value);
-  //     const url = `https://api.ratings.food.gov.uk/Establishments?localAuthorityId=${filteredUrl}/basic`;
-  //     fetch(url, { headers: { "x-api-version": "2" } })
-  //       .then((res) => res.json())
-  //       .then((json) => setFilterData(json));
-  //   };
-
-  /* 
-1. render the selection
-2. use the api to pull the values -- what triggers this -- useEffect(pagenumber) or onchange(the select value)
-3. render the values in the options
-4. send a new api call when the new filter value is selected OR display only content with that value
-*/
+    .then((res) => data.push(res));
 
   return (
-    <select onChange={changeHandler}>
-      {authorities.map((authority, index) => (
-        <option key={index}>{authority}</option>
-      ))}
-    </select>
+    <div className="dropdown">
+      <div className="control" onClick={() => setOpen((prev) => !prev)}>
+        <div className="selected-value">{prompt}</div>
+        <div className={`arrow ${open ? "open" : null}`} />
+      </div>
+      <div className={`options ${open ? "open" : null}`}>
+        {data.map((option) => (
+          <div className="option" key={option.LocalAuthorityId}>
+            {option.name}
+          </div>
+        ))}
+      </div>
+    </div>
   );
-};
+}
+
+{"authorities":[{"LocalAuthorityId":197,"LocalAuthorityIdCode":"760","Name":"Aberdeen City","EstablishmentCount":2138,"SchemeType":2,"links":[{"rel":"self","href":"http://api.ratings.food.gov.uk/authorities/197"}]},
